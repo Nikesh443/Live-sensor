@@ -3,9 +3,16 @@ from setuptools import setup, find_packages
 from typing import List
 
 
-def get_requirements()->List[str]:
-    requirements_list : List[str]=[]
-    return requirements_list
+def get_requirements(file_path:str)->List[str]:
+    """
+    This will return the list of strings
+    """
+    with open(file_path) as file_obj:
+        requirements = file_obj.readlines()
+        requirements = [req.str.replace('/n','') for req in requirements]
+
+        return requirements
+
 
 
 
